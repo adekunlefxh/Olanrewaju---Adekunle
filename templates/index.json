@@ -297,10 +297,11 @@
       "type": "gift-banner",
       "name": "Gift Banner",
       "settings": {
+        "background": "shopify://shop_images/ChatGPT_Image_Jul_16_2026_03_34_00_PM.png",
         "heading": "The Gift Guide",
         "text": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts.",
         "button_text": "SHOP NOW",
-        "button_link": ""
+        "button_link": "shopify://collections/all"
       }
     }
   },
