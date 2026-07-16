@@ -1,0 +1,135 @@
+<section class="gift-banner">
+  <div class="gift-banner__content">
+
+    {% if section.settings.heading != blank %}
+      <h1>{{ section.settings.heading }}</h1>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <p>{{ section.settings.text }}</p>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <a
+        href="{{ section.settings.button_link }}"
+        class="gift-banner__button"
+      >
+        {{ section.settings.button_text }}
+        <span>→</span>
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+
+.gift-banner{
+    background-image:url({{ section.settings.background | image_url: width: 2000 }});
+    background-size:cover;
+    background-position:center;
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    padding:80px;
+}
+
+.gift-banner__content{
+    max-width:500px;
+}
+
+.gift-banner h1{
+    font-size:72px;
+    line-height:1.1;
+    font-weight:600;
+    margin-bottom:30px;
+}
+
+.gift-banner p{
+    font-size:22px;
+    line-height:1.7;
+    margin-bottom:40px;
+}
+
+.gift-banner__button{
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 36px;
+    transition:.35s;
+}
+
+.gift-banner__button:hover{
+    padding-right:50px;
+}
+
+.gift-banner__button span{
+    transition:.35s;
+}
+
+.gift-banner__button:hover span{
+    transform:translateX(8px);
+}
+
+@media(max-width:768px){
+
+.gift-banner{
+padding:40px 20px;
+min-height:500px;
+}
+
+.gift-banner h1{
+font-size:44px;
+}
+
+.gift-banner p{
+font-size:18px;
+}
+
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Gift Banner",
+  "settings": [
+    {
+      "type":"image_picker",
+      "id":"background",
+      "label":"Background Image"
+    },
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading",
+      "default":"The Gift Guide"
+    },
+    {
+      "type":"textarea",
+      "id":"text",
+      "label":"Description",
+      "default":"Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts."
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button Text",
+      "default":"SHOP NOW"
+    },
+    {
+      "type":"url",
+      "id":"button_link",
+      "label":"Button Link"
+    }
+  ],
+  "presets":[
+    {
+      "name":"Gift Banner"
+    }
+  ]
+}
+{% endschema %}
