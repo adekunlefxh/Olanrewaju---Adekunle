@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "gift_banner_HdwNNw": {
+      "type": "gift-banner",
+      "name": "Gift Banner",
+      "settings": {
+        "background": "shopify://shop_images/ChatGPT_Image_Jul_16_2026_03_34_00_PM.png",
+        "heading": "The Gift Guide",
+        "text": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this is holiday season.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify://collections/all"
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -273,6 +284,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
@@ -292,17 +304,6 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "gift_banner_HdwNNw": {
-      "type": "gift-banner",
-      "name": "Gift Banner",
-      "settings": {
-        "background": "shopify://shop_images/ChatGPT_Image_Jul_16_2026_03_34_00_PM.png",
-        "heading": "The Gift Guide",
-        "text": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts.",
-        "button_text": "SHOP NOW",
-        "button_link": "shopify://collections/all"
       }
     }
   },
