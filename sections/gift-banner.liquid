@@ -25,13 +25,15 @@
 <style>
 
 .gift-banner{
-    background-image:url({{ section.settings.background | image_url: width: 2000 }});
-    background-size:cover;
-    background-position:center;
     min-height:650px;
     display:flex;
     align-items:center;
     padding:80px;
+
+    background-image: url('{{ section.settings.background | image_url: width: 2000 }}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .gift-banner__content{
