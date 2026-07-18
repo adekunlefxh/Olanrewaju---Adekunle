@@ -1,8 +1,16 @@
 <section class="gift-grid page-width">
+<div class="gift-grid__header">
+  <h2>{{ section.settings.heading }}</h2>
 
-  <div class="gift-grid__header">
-    <h2>{{ section.settings.heading }}</h2>
-  </div>
+  {% if section.settings.view_all_link != blank %}
+    <a
+      href="{{ section.settings.view_all_link }}"
+      class="gift-grid__view-all"
+    >
+      View all
+    </a>
+  {% endif %}
+</div>
 
   <div class="gift-grid__items">
     {% for block in section.blocks %}
@@ -28,9 +36,7 @@
 
           </div>
 
-          <h3>{{ product.title }}</h3>
-
-          <p>{{ product.price | money }}</p>
+          
 
         </div>
       {% endif %}
@@ -46,18 +52,34 @@
 }
 
 .gift-grid__header{
-    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin-bottom:50px;
+}
+
+.gift-grid__header h2{
+    margin:0;
+    font-size:42px;
+    font-weight:600;
+}
+
+.gift-grid__view-all{
+    text-decoration:none;
+    color:#000;
+    font-weight:500;
 }
 
 .gift-grid__items{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:30px;
+    gap:20px;
 }
 
 .gift-card img{
     width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
     display:block;
 }
 
@@ -67,14 +89,25 @@
 
 .gift-card__plus{
     position:absolute;
-    right:15px;
-    bottom:15px;
-    width:45px;
-    height:45px;
+    top:16px;
+    right:16px;
+    width:42px;
+    height:42px;
     border:none;
     border-radius:50%;
+    background:#fff;
+    color:#000;
     cursor:pointer;
-    font-size:22px;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.gift-card__plus:hover{
+    transform:scale(1.08);
 }
 
 .gift-card h3{
@@ -100,12 +133,18 @@ grid-template-columns:1fr;
 {
   "name":"Gift Grid",
   "settings":[
-    {
-      "type":"text",
-      "id":"heading",
-      "label":"Heading",
-      "default":"Shop Gifts"
-    }
+  {
+    "type":"text",
+    "id":"heading",
+    "label":"Heading",
+    "default":"Shop Gifts"
+  },
+  {
+    "type":"url",
+    "id":"view_all_link",
+    "label":"View All Link"
+  }
+  
   ],
   "blocks":[
     {
