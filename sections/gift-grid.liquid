@@ -28,11 +28,14 @@
             >
 
             <button
-              class="gift-card__plus"
-              data-product-handle="{{ product.handle }}"
-            >
-              +
-            </button>
+  class="gift-card__plus"
+  data-title="{{ product.title }}"
+  data-price="{{ product.price | money }}"
+  data-image="{{ product.featured_image | image_url: width: 900 }}"
+  data-description="{{ product.description | strip_html | escape }}"
+>
+  +
+</button>
 
           </div>
 
@@ -126,9 +129,72 @@ grid-template-columns:1fr;
 }
 
 }
+.gift-popup{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.45);
+    z-index:999;
+}
 
+.gift-popup.active{
+    display:flex;
+}
+
+.gift-popup__content{
+    background:#fff;
+    width:700px;
+    max-width:95%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    padding:30px;
+    position:relative;
+}
+
+.gift-popup__left img{
+    width:100%;
+    display:block;
+}
+
+.gift-popup__close{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:none;
+    border:none;
+    font-size:30px;
+    cursor:pointer;
+}
 </style>
+<div class="gift-popup" id="giftPopup">
+  <div class="gift-popup__overlay"></div>
 
+  <div class="gift-popup__content">
+
+    <button class="gift-popup__close">&times;</button>
+
+    <div class="gift-popup__left">
+      <img id="popupImage" src="" alt="">
+    </div>
+
+    <div class="gift-popup__right">
+      <h2 id="popupTitle"></h2>
+
+      <div id="popupPrice"></div>
+
+      <div id="popupDescription"></div>
+
+      <button id="popupAddToCart" class="gift-banner__button">
+        ADD TO CART
+      </button>
+
+    </div>
+
+  </div>
+</div>
 {% schema %}
 {
   "name":"Gift Grid",
@@ -144,7 +210,7 @@ grid-template-columns:1fr;
     "id":"view_all_link",
     "label":"View All Link"
   }
-  
+
   ],
   "blocks":[
     {
@@ -167,3 +233,40 @@ grid-template-columns:1fr;
   ]
 }
 {% endschema %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popup = document.getElementById("giftPopup");
+
+  const popupImage = document.getElementById("popupImage");
+  const popupTitle = document.getElementById("popupTitle");
+  const popupPrice = document.getElementById("popupPrice");
+  const popupDescription = document.getElementById("popupDescription");
+
+  document.querySelectorAll(".gift-card__plus").forEach(function(button){
+
+   button.addEventListener("click", function(){
+
+  console.log(this.dataset);
+
+  popupImage.src = this.dataset.image;
+  popupTitle.textContent = this.dataset.title;
+  popupPrice.textContent = this.dataset.price;
+  popupDescription.textContent = this.dataset.description;
+
+  popup.classList.add("active");
+
+});
+
+  });
+
+  document.querySelector(".gift-popup__close").addEventListener("click", function(){
+    popup.classList.remove("active");
+  });
+
+  document.querySelector(".gift-popup__overlay").addEventListener("click", function(){
+    popup.classList.remove("active");
+  });
+
+});
+</script>
