@@ -92,25 +92,27 @@
 
 .gift-card__plus{
     position:absolute;
-    top:16px;
-    right:16px;
-    width:42px;
-    height:42px;
+    top:50%;
+    right:-20px;
+    transform:translateY(-50%);
+    width:46px;
+    height:46px;
     border:none;
     border-radius:50%;
     background:#fff;
     color:#000;
     cursor:pointer;
-    font-size:24px;
+    font-size:28px;
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
     transition:.3s;
+    z-index:10;
 }
 
 .gift-card__plus:hover{
-    transform:scale(1.08);
+    transform:translateY(-50%) scale(1.08);
 }
 
 .gift-card h3{
@@ -143,15 +145,22 @@ grid-template-columns:1fr;
     display:flex;
 }
 
+.gift-popup__overlay{
+    position:absolute;
+    inset:0;
+}
+
 .gift-popup__content{
-    background:#fff;
-    width:700px;
-    max-width:95%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    padding:30px;
     position:relative;
+    background:#fff;
+    width:620px;
+    max-width:90%;
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:20px;
+    padding:20px;
+    border-radius:4px;
+    z-index:2;
 }
 
 .gift-popup__left img{
@@ -159,17 +168,54 @@ grid-template-columns:1fr;
     display:block;
 }
 
+.gift-popup__right h2{
+    margin:0;
+    font-size:34px;
+    line-height:1.1;
+}
+
 .gift-popup__close{
     position:absolute;
     top:15px;
     right:15px;
-    background:none;
     border:none;
+    background:none;
     font-size:30px;
     cursor:pointer;
 }
+.popup-colors{
+display:flex;
+margin:15px 0;
+}
+
+.popup-colors button{
+flex:1;
+padding:14px;
+border:1px solid #ddd;
+background:#fff;
+cursor:pointer;
+}
+
+.gift-popup select{
+width:100%;
+padding:14px;
+margin:15px 0 25px;
+}
+
+#popupPrice{
+font-size:24px;
+font-weight:600;
+margin:15px 0;
+}
+
+#popupDescription{
+margin-bottom:20px;
+line-height:1.6;
+}
+
 </style>
 <div class="gift-popup" id="giftPopup">
+
   <div class="gift-popup__overlay"></div>
 
   <div class="gift-popup__content">
@@ -177,23 +223,41 @@ grid-template-columns:1fr;
     <button class="gift-popup__close">&times;</button>
 
     <div class="gift-popup__left">
-      <img id="popupImage" src="" alt="">
+      <img id="popupImage">
     </div>
 
     <div class="gift-popup__right">
+
       <h2 id="popupTitle"></h2>
 
       <div id="popupPrice"></div>
 
-      <div id="popupDescription"></div>
+      <p id="popupDescription"></p>
+
+      <label>Color</label>
+
+      <div class="popup-colors">
+        <button>White</button>
+        <button>Black</button>
+      </div>
+
+      <label>Size</label>
+
+      <select>
+        <option>Choose your size</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
 
       <button id="popupAddToCart" class="gift-banner__button">
-        ADD TO CART
+        ADD TO CART →
       </button>
 
     </div>
 
   </div>
+
 </div>
 {% schema %}
 {
