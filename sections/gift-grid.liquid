@@ -93,7 +93,7 @@
 .gift-card__plus{
     position:absolute;
     top:50%;
-    right:-22px;
+    right:-20px;
     transform:translateY(-50%);
     width:46px;
     height:46px;
@@ -108,7 +108,11 @@
     justify-content:center;
     box-shadow:0 4px 12px rgba(0,0,0,.15);
     transition:.3s;
-    z-index:2;
+    z-index:10;
+}
+
+.gift-card__plus:hover{
+    transform:translateY(-50%) scale(1.08);
 }
 
 .gift-card__plus:hover{
@@ -131,36 +135,6 @@ grid-template-columns:1fr;
 }
 
 }
-.gift-popup{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,.45);
-    z-index:999;
-}
-
-.gift-popup.active{
-    display:flex;
-}
-
-.gift-popup__content{
-    background:#fff;
-    width:700px;
-    max-width:95%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    padding:30px;
-    position:relative;
-}
-
-.gift-popup__left img{
-    width:100%;
-    display:block;
-}
-
 .gift-popup__close{
     position:absolute;
     top:15px;
@@ -170,8 +144,42 @@ grid-template-columns:1fr;
     font-size:30px;
     cursor:pointer;
 }
+
+/* Paste the entire block below */
+
+.popup-colors{
+display:flex;
+margin:15px 0;
+}
+
+.popup-colors button{
+flex:1;
+padding:14px;
+border:1px solid #ddd;
+background:#fff;
+cursor:pointer;
+}
+
+.gift-popup select{
+width:100%;
+padding:14px;
+margin:15px 0 25px;
+}
+
+#popupPrice{
+font-size:24px;
+font-weight:600;
+margin:15px 0;
+}
+
+#popupDescription{
+margin-bottom:20px;
+line-height:1.6;
+}
+
 </style>
 <div class="gift-popup" id="giftPopup">
+
   <div class="gift-popup__overlay"></div>
 
   <div class="gift-popup__content">
@@ -179,23 +187,41 @@ grid-template-columns:1fr;
     <button class="gift-popup__close">&times;</button>
 
     <div class="gift-popup__left">
-      <img id="popupImage" src="" alt="">
+      <img id="popupImage">
     </div>
 
     <div class="gift-popup__right">
+
       <h2 id="popupTitle"></h2>
 
       <div id="popupPrice"></div>
 
-      <div id="popupDescription"></div>
+      <p id="popupDescription"></p>
+
+      <label>Color</label>
+
+      <div class="popup-colors">
+        <button>White</button>
+        <button>Black</button>
+      </div>
+
+      <label>Size</label>
+
+      <select>
+        <option>Choose your size</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
 
       <button id="popupAddToCart" class="gift-banner__button">
-        ADD TO CART
+        ADD TO CART →
       </button>
 
     </div>
 
   </div>
+
 </div>
 {% schema %}
 {
