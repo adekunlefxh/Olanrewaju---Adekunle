@@ -25,15 +25,16 @@
 <style>
 
 .gift-banner{
-    min-height:650px;
+    min-height:430px;
     display:flex;
-    align-items:flex-start;
-    padding:140px 80px 80px;
+    align-items:center;
+    padding:40px 50px;
 
-    background-image: url('{{ section.settings.background | image_url: width: 2000 }}');
+    background-image:url('{{ section.settings.background | image_url: width: 2000 }}');
     background-repeat:no-repeat;
-   background-position: right center;
-    background-size:cover;
+    background-position:center top;
+    background-size:contain;
+    background-color:#fff;
 }
 
 .gift-banner__content{
