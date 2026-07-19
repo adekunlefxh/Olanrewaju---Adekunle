@@ -27,18 +27,17 @@
 .gift-banner{
     min-height:650px;
     display:flex;
-    align-items:center;
-    padding:80px;
+    align-items:flex-start;
+    padding:140px 80px 80px;
 
     background-image: url('{{ section.settings.background | image_url: width: 2000 }}');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
 }
 
 .gift-banner__content{
     max-width:500px;
-    margin-top:40px;
 }
 
 .gift-banner h1{
