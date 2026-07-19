@@ -88,27 +88,28 @@
 
 .gift-card__image{
     position:relative;
+    overflow:visible;
 }
 
 .gift-card__plus{
     position:absolute;
     top:50%;
-    right:-20px;
+    right:16px;
     transform:translateY(-50%);
-    width:46px;
-    height:46px;
+    width:48px;
+    height:48px;
     border:none;
     border-radius:50%;
     background:#fff;
     color:#000;
-    cursor:pointer;
-    font-size:28px;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:26px;
+    cursor:pointer;
+    z-index:999;
     box-shadow:0 4px 12px rgba(0,0,0,.15);
-    transition:.3s;
-    z-index:10;
+    transition:all .3s ease;
 }
 
 .gift-card__plus:hover{
